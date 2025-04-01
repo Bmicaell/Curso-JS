@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu primeiro codigo</title>
+    <style>
+        body {
+            background-color: rgb(170, 125, 243);
+            color: white;
+            font: normal 20pt arial;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ola, Mundo!</h1>
+    <p>Ja me livrei da maldição!!</p>
+    <script>
+        var n1 = Number(window.prompt("Digite um numero:")) // prompt retorna string
+        
+        var n2 = Number(window.prompt("Digite outro numero:")) // prompt retorna string
+        var soma = n1 + n2
+
+        // + é operador de concatenação de strings, não soma
+        // para somar, é necessário converter as strings em números
+        //number.parseint(n) inteiro 
+        //number.parsefloat(n) decimal
+        //number (n) inteiro ou decimal
+        // tofixed (2) // arredonda para 2 casas decimais
+        // replace ('.', ',') // substitui o ponto por vírgula
+        // tolocaleString('pt-BR', {style: 'currency', currency: 'BRL'}) // converte para string local
+
+        // number para string
+        // soma.toString() // converte para string
+        // String(soma) // converte para string
+        window.alert(`A soma entre ${n1} e ${n2} é a igual a ${soma}`)
+
+        // soma.length // retorna o tamanho da string
+        //soma.upperCase() // converte para maiúsculas
+        //soma.lowerCase() // converte para minúsculas
+    </script>
+</body>
+</html>
