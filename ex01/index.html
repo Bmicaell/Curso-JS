@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do Dia</title>
+    <style>
+        @charset "UTF-8";
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        body {
+            background-color: #C5B584;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+    
+            padding: 20px;
+            text-align: center;
+
+            color: white;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        section {
+            background-color: #E5E5E5;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 600px;
+            height: 300px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        section > p {
+           margin-bottom: 15px;
+        }
+
+        section > .img {
+            background-image: url(images/amanhecer.jpg);
+            background-size: cover;
+            width: 250px;
+            height: 250px;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hora do Dia</h1>
+    </header>
+    <main>
+        
+        <section>
+            <p>Agora são <span id="hour"></span>horas.</p>
+            
+            <div class="img">
+                
+            </div>
+        </section>
+    </main>
+    <footer>
+        CursoemVideo
+    </footer>
+
+    <script>
+        function horario() {
+            var agora = new Date()
+            var hora = agora.getHours()
+            var msg = window.document.getElementById('hour')
+            var corpo = document.body
+            let imagem = document.querySelector('.img')
+            
+            msg.innerHTML = `${hora} `
+
+            if(hora >= 0 && hora < 12) {
+                corpo.style.backgroundColor = '#C5B584'
+                imagem.styke.backgroundImage = 'url(images/amanhecer.jpg)'
+            } else if ( hora > 12 && hora < 18) {
+                corpo.style.backgroundColor = '#A47660'
+                imagem.style.backgroundImage = 'url(images/tardecer.jpg)'
+            } else {
+                corpo.style.backgroundColor = '#494C4B'
+                imagem.style.backgroundImage = 'url(images/noite.jpg)'
+            }
+
+        }
+        window.onload = horario
+    </script>
+</body>
+</html>
