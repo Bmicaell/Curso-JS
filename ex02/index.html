@@ -6,22 +6,17 @@
     <title>Verificador de Idade</title>
 
     <style>
-        * {
-            padding: 0px;
-            margin: 0px;
-
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
+        
 
         body {
             background-color: rgb(75, 180, 245);
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         header {
             text-align: center;
             color: white;
-            padding: 20px;
+           
             
         }
 
@@ -30,7 +25,7 @@
             align-items: center;
             justify-content: center;
 
-            height: 30vh;
+            
             width: 100vw;
         }
 
@@ -39,8 +34,7 @@
 
             width: 500px;
             
-            
-            padding-top: 10px;
+            padding: 15px;
 
             border-radius: 10px;
 
@@ -49,16 +43,18 @@
             
         }
 
-        section p {
-            padding: 15px;
-
-        }
-
+       
         p > #botao {
            border-radius: 5px;
            font-size: 1.1em;
            padding: 5px;
            cursor: pointer;
+        }
+
+        #foto {
+            display: block;
+            width: 150px;
+            margin: 10px auto;
         }
 
         footer {
@@ -74,25 +70,24 @@
     </header>
     <main>
         <section>
-            <form action="#" >
-                <div>
-                    <p>
-                        <label for="iano">Ano de Nascimento</label>
-                        <input type="number" name="ano" id="iano">
-                    </p>
-                    <p>
-                        Sexo:
-                        <input type="radio" name="sexo" id="imasc" value="M"><label for="imasc" > Masculino</label>
-                        <input type="radio" name="sexo" id="ifem" value="F"><label for="ifem" > Feminino</label>
-                    </p>
-                    <p>
-                        <input type="button" value="Verifica" onclick="verificaAno()">
-                    </p>
-                    <p id="res">Preencha os dados acima para ver o resultado!</p>
-                    
-                </div>
-            </form>
             
+            <div>
+                <p>Ano de Nascimento
+                    <input type="number" name="ano" id="iano">
+                </p>
+                <p>
+                    Sexo:
+                    <input type="radio" name="sexo" id="imasc" value="M"><label for="imasc" > Masculino</label>
+                    <input type="radio" name="sexo" id="ifem" value="F"><label for="ifem" > Feminino</label>
+                </p>
+                <p>
+                    <input type="button" value="Verificar" onclick="verificaAno()">
+                </p>
+            </div>
+
+            <div id="res">
+                Preencha os dados acima para ver o resultado!
+            </div>
         </section>
     </main>
     <footer>
@@ -106,7 +101,7 @@
             var fano = document.getElementById('iano')
             var res = document.getElementById('res')
 
-            if(fano.value.length == 0 || Number(fano.value) > ano) {
+            if(fano.value.length == 0 || Number(fano.value) > ano || Number(fano.value) < 1900) {
                 window.alert('[ERRO]Verifique os dados e tente novamente!')
             } else {
                 var fsex = document.getElementsByName('sexo')
@@ -123,22 +118,28 @@
 
                     } else if (idade < 21) {
                         //JOVEM
+                        img.setAttribute('src', 'images/jovem-homem.png')
                     } else if(idade < 50) {
                         //ADULTO
+                        img.setAttribute('src', 'images/adulto-homem.png')
                     } else {
                         //IDOSO
+                        img.setAttribute('src', 'images/homem-idosa.png')
                     }
                 } else if (fsex[1].checked) {
                     genero = 'Mulher'
                     if(idade >= 0 && idade < 10 ) {
                         //CRIANCA
-
+                        img.setAttribute('src', 'images/bebe-mulher.png')
                     } else if (idade < 21) {
                         //JOVEM
+                        img.setAttribute('src', 'images/jovem-mulher.png')
                     } else if(idade < 50) {
                         //ADULTO
+                        img.setAttribute('src', 'images/adulto-mulher.png')
                     } else {
                         //IDOSO
+                        img.setAttribute('src', 'images/mulher-idosa.png')
                     }
                 }
                 res.style.textAlign = 'center'
