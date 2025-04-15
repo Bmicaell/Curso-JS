@@ -1,22 +1,33 @@
 function contador() {
-    var numInicial = document.getElementById("inumini").value;
-    var numFinal = document.getElementById("inumfim").value;
-    var numPasso = document.getElementById("inumpasso").value;
-    var res = document.getElementById("res");
+    let numInicial = document.getElementById("inumini").value;
+    let numFinal = document.getElementById("inumfim").value;
+    let numPasso = document.getElementById("inumpasso").value;
+    let res = document.getElementById("res");
 
     if (numInicial.length == 0 || numFinal.length == 0 || numPasso.length == 0) {
         alert("Erro! Faltam dados!");
-    } else if (numInicial  == 0 || numFinal == 0) {
-       alert("Erro! Números inválidos!");
-    } else if (numPasso <= 0) {
-        alert("Erro! Vamos considerar passo 1!");
-        numPasso = 1;
+    } else {
+        res.innerHTML = 'Contando: <br>'
+        let i = Number(numInicial)
+        let f = Number(numFinal)
+        let p = Number(numPasso)
+        if(p <= 0){
+            alert('Passo inválido! Considerando PASSO 1')
+            p = 1
+        }
+
+        if(i < f) {
+            // CONTAGEM CRESCENTE
+            for(let c = i; c <= f; c += p){
+                res.innerText += ` ${c} \u{1F449}`
+            }
+        } else { 
+            //CONTAGEM REGRESSIVA
+            for(c = i; c >= f; c -= p) {
+                res.innerHTML += ` ${c} \u{1F449}`
+            }
+        }
+        res.innerHTML += `\u{1F3C1}`
     }
 
-    for(numInicial = 0; numInicial <= numFinal; numInicial++ ) {
-        res.innerHTML += `${numInicial} \u{1F449}`; // \u{1F449} é o emoji de seta
-        if(numInicial == numFinal) {
-            res.innerHTML += `\u{1F3C1}`; // \u{1F3C1} é o emoji de bandeira
-        }
-    }
 }
